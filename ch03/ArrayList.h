@@ -1,3 +1,5 @@
+#include "Point.h"
+
 #ifndef __ARRAY_LIST_H__
 #define __ARRAY_LIST_H__
 
@@ -5,13 +7,13 @@
 #define FALSE	0	// '거짓'을 표현하기 위한 매크로 정의
 
 #define LIST_LEN	100
-typedef int LData;	// LData에 대한 typedef 선언
+typedef Point * LData;	// LData에 대한 typedef 선언
 
 typedef struct __ArrayList	//	배열기반 리스트를 정의한 구조체
 {
 	LData arr[LIST_LEN];	//	리스트의 저장소인 배열	
 	int numOfData;			//	저장된 데이터의 수
-	int curPosition;		//	데이터 참조위치를 기록
+	int curPosition;		//	데이터 참조위치를 기록 head를 의미
 } ArrayList;
 
 typedef ArrayList List;	
