@@ -61,11 +61,33 @@ void ShowNodeData(int data){
 }
 
 void ShowPrefixTypeExp(BTreeNode * bt){     // 전위 표기법 기반 출력
-    PreorderTraverse(bt, ShowPrefixTypeExp);
+    PreorderTraverse(bt, ShowNodeData);
 }    
 void ShowInfixTypeExp(BTreeNode * bt){      // 중위 표기법 기반 출력    
-    InorderTraverse(bt, ShowPrefixTypeExp);
+    if(bt == NULL)
+        return;
+    
+    // if(0<=GetData(bt) && GetData(bt)<=9)
+    //     printf("(");
+    // ShowInfixTypeExp(GetLeftSubTree(bt));
+    // ShowNodeData(GetData(bt));
+    // ShowInfixTypeExp(GetRightSubTree(bt));    
+    // if(GetRightSubTree(bt) != NULL)
+    //     printf(")");
+
+    if(bt->left != NULL || bt->right != NULL){
+        printg(" ( ");
+    }
+    
+    ShowInfixTypeExp(bt->left);
+    ShowNodeData(bt->data);
+    ShowInfixTypeExp(bt->right);
+
+    if(bt->left != NULL || bt->right != NULL)
+        printf(" ) "); 
+
+
 }     
 void ShowPostfixTypeExp(BTreeNode * bt){    // 후위 표기법 기반 출력
-    PostorderTraverse(bt, ShowPrefixTypeExp);
+    PostorderTraverse(bt, ShowNodeData);
 }   
