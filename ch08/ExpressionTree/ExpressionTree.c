@@ -30,9 +30,28 @@ BTreeNode * MakeExpTree(char exp[]){
     return SPop(&stack);
 }
 
-// int EvaluateExpTree(BTreeNode * bt){        // 수식 트리 계산
+int EvaluateExpTree(BTreeNode * bt){        // 수식 트리 계산
+    int op1, op2;
 
-// }        
+    if(GetLeftSubTree(bt) == NULL && GetRightSubTree(bt) == NULL)
+        return GetData(bt);
+    
+    op1 = EvaluateExpTree(GetLeftSubTree(bt));      // 첫 번째 피연산자
+    op2 = EvaluateExpTree(GetRightSubTree(bt));     // 두 번쨰 피연산자
+
+    switch(GetData(bt)){
+        case '+':
+            return op1+op2;
+        case '-':
+            return op1-op2;
+        case '*':
+            return op1*op2;
+        case '/':
+            return op1/op2;
+    }
+
+    return 0;
+}        
 
 void ShowPrefixTypeExp(int data){
     if(0<=data && data<=9)
