@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+void Swap(int arr[], int idx1, int idx2){
+    int temp = arr[idx1];
+    arr[idx1] = arr[idx2];
+    arr[idx2] = temp;
+}
+
 int MedianOfThree(int arr[], int left, int right){
     int samples[3] = {left, (left+right)/2, right};
 
@@ -13,12 +19,6 @@ int MedianOfThree(int arr[], int left, int right){
         Swap(samples, 0, 1);
     
     return samples[1];
-}
-
-void Swap(int arr[], int idx1, int idx2){
-    int temp = arr[idx1];
-    arr[idx1] = arr[idx2];
-    arr[idx2] = temp;
 }
 
 int Partition(int arr[], int left, int right){
@@ -60,7 +60,7 @@ void QuickSort(int arr[], int left, int right){
 }
 
 int main(void){
-    int arr[7] = {3,2,4,1,7,6,5};
+    int arr[15] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 
     int len = sizeof(arr) / sizeof(int);
     int i;
